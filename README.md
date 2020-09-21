@@ -1,4 +1,4 @@
-# valkyrie (working title)
+# Pizza Builder
 
 ## members
 
@@ -8,7 +8,4 @@
 1. Kim
 1. Ryan
 
-Potential projects:
-
-1. Pizza builder
-1. Code Fellows RPG
+## Project: Pizza builder
