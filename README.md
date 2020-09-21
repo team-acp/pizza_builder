@@ -9,3 +9,6 @@
 1. Ryan
 
 ## Project: Pizza builder
+
+[User Stories](https://trello.com/b/0MepxEMt/pizza)
+[Domain Model](domain_model.png)
