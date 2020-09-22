@@ -1,0 +1,152 @@
+body{
+    margin: 0 5%;
+    border: solid #F2CD7F 5px; 
+    padding: 0 5%;
+    font-family: Arial;
+    background: #F2CD7F;
+}
+
+header{
+    text-align: left;
+    margin: 0;
+    border: 0;
+    overflow-y: auto;
+    padding: 0 0 5px;
+    background: #C49E3D;
+}
+
+h1 {
+    margin: 0% 5% 0px;
+    padding: 10px 0;
+    font-size: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Press Start 2P';
+    -webkit-text-stroke: 1px #DC4820;
+    text-shadow: #575757 0px 5px 5px;
+}
+
+header p {
+    margin-top: -10px;
+    font-family: 'Carter One';
+    font-size: 15px;
+    font-style: italic;
+    text-align: center;
+}
+
+header ul {
+    background-color: #DC4820;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header ul li {
+    display: block;
+    float: left;
+    margin: 0;
+    border: 0;
+    padding: 0 10px 0;
+}
+
+header ul li a {
+    display: block;
+    color: #ffffff;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+header ul li a:hover {
+    background-color: #9F2A16;
+}
+
+main {
+    background: #ffffff;
+    padding: 10px;
+}
+
+h2 {
+    font-family: 'Press Start 2P';
+    -webkit-text-stroke: 1px #DC4820;
+    text-shadow: #575757 0px 5px 5px;
+    color: #ffffff;
+}
+
+legend {
+    font-family: 'Carter One';
+}
+
+h3 {
+    font-family: 'Carter One';
+}
+
+form {
+    height: 500px;
+    width: 250px;
+}
+
+.toppings {
+    display: flex;
+    flex-flow: row wrap;
+
+}
+/* 
+#sauce {
+    position: absolute;
+    top: 300px;
+}
+
+#cheese {
+    position: absolute;
+    top: 225px;
+}
+
+#vegetables {
+    position: absolute;
+    top: 225px;
+    left: 350px;
+}
+
+#meats {
+    position: absolute;
+    top: 230px;
+    left: 550px;
+} */
+
+
+#your_pizza {
+    padding: 0 2% 0;
+    position: absolute;
+    top: 195px;
+    right: 200px;
+    background-color: #F2CD7F;
+    width: 500px;
+    color: #ffffff;
+    font-family: 'Press Start 2P';
+    -webkit-text-stroke: 1px #DC4820;
+    text-shadow: #575757 0px 5px 5px;
+}
+
+footer {
+    border: #6B8413;
+    padding: 5px 0 5px;
+    border-radius: 0 0 30px 30px;
+    font-size: 12px;
+    text-align: center;
+    background: #6B841E;
+    color: #ffffff;
+}
+
+footer span {
+    padding-left: 10px;
+    float: left;
+}
+
+footer a {
+    padding-right:10px;
+    display: fixed;
+    text-decoration: none;
+    color: #ffffff;
+}
