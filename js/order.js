@@ -10,7 +10,7 @@ var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'toma
 
 function createCheckboxList(toppings, container) {
   for (let i = 0; i < toppings.length; i++) {
-    var inputEl = document.createElement('imput');
+    var inputEl = document.createElement('input');
     var labelEl = document.createElement('label');
     container.append(inputEl); //do we want to append the input to the label?
     container.append(labelEl);
