@@ -29,10 +29,6 @@ Pizza.prototype.removeTopping = function (topping) {
 Pizza.prototype.addCheese = function (cheese) {
   if (!cheese.includes(cheese)) {
     this.cheese.push(cheese);
-  } for (let i = 0; i < this.cheese[i].length; i++) {
-    if (this.cheese[i] === this.cheese[5]) {
-      return null;
-    }
   }
 };
 
