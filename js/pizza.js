@@ -62,7 +62,7 @@ Pizza.prototype.removeSauce = function () {
 
 Pizza.prototype.render = function () {
   var orderEl = document.getElementById('your_pizza');
-  if (!orderEl) orderEl = document.getElementById('order_pizza');
+  if (!orderEl) orderEl = document.getElementById('order_pizza');//this is hack so that CSS will not capture the ticket the same way it does on the order form
   var toppingsEl = document.createElement('ul');
   orderEl.append(toppingsEl);
 
