@@ -1,0 +1,49 @@
+body{
+    margin: 0 5%;
+    border: solid #F2CD7F 5px; 
+    padding: 5%;
+}
+
+header{
+    text-align: left;
+    margin: 0;
+    border: 0;
+    padding: 0 0 10px;
+    background: #C49E3D;
+}
+
+h1 {
+    color: #DC4820;
+    font-family: 'Press Start 2P';
+    -webkit-text-stroke: 1px #ffffff;
+    text-shadow: #575757 0px 5px 5px;
+}
+
+
+header ul {
+    background-color: #DC4820;
+}
+
+header ul li {
+    display: inline;
+    margin: 0;
+    border: 0;
+    padding: 0 10px 0;
+}
+
+li a:link {
+    display: inline block;
+    color: #ffffff;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+#order{
+    float: right;
+}
+
+#your_pizza {
+    float: right;
+}
