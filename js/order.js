@@ -1,8 +1,6 @@
 'use strict';
 
 
-
-
 function createCheckboxList(toppings, container) {
   for (let i = 0; i < toppings.length; i++) {
     var inputEl = document.createElement('input');
