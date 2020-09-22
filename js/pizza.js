@@ -10,19 +10,15 @@ function Pizza(sauce, cheese, toppings) {
 //accept multiple toppings
 //max of 5 toppings
 //no double toppings
-Pizza.prototype.addTopping = function (toppings) {
-  if (!toppings.includes(toppings)) {
-    this.toppings.push(toppings);
-  } for (let i = 0; i < this.toppings[i]; i++) {
-    if (toppings[i] === true) {
-      return null;
-    }
+Pizza.prototype.addTopping = function (topping) {
+  if (!this.toppings.includes(topping)) {
+    this.toppings.push(topping);
   }
 };
 
-Pizza.prototype.removeTopping = function (toppings) {
-  for (let i = 0; i < toppings[i].length; i++) {
-    if (this.toppings.includes(toppings)) {
+Pizza.prototype.removeTopping = function (topping) {
+  for (let i = 0; i < this.toppings.length; i++) {
+    if (this.toppings.includes(topping)) {
       this.toppings.splice(i, 1);
       break;
     }
@@ -34,7 +30,7 @@ Pizza.prototype.addCheese = function (cheese) {
   if (!cheese.includes(cheese)) {
     this.cheese.push(cheese);
   } for (let i = 0; i < this.cheese[i].length; i++) {
-    if (this.cheese[i] === true) {
+    if (this.cheese[i] === this.cheese[5]) {
       return null;
     }
   }
@@ -92,3 +88,6 @@ Pizza.toppingLayer = function (topping) {
     default: return 0;
   }
 };
+
+
+
