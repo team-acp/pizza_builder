@@ -44,3 +44,5 @@ function createAllCheckBoxes() {
 
 createAllCheckBoxes();
 
+var myPizza = new Pizza('sauce', 'mozzarella', ['green peppers', 'mushrooms', 'onions', 'anchovies']);
+myPizza.render();
