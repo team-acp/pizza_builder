@@ -11,7 +11,6 @@ function Pizza(sauce, cheese, toppings) {
 //max of 5 toppings
 //no double toppings
 Pizza.prototype.addTopping = function (toppings) {
-
   if (!toppings.includes(toppings)) {
     this.toppings.push(toppings);
   }
@@ -28,10 +27,9 @@ Pizza.prototype.removeTopping = function (toppings) {
 };
 
 Pizza.prototype.addCheese = function (cheese) {
-  for (let i = 0; i < cheese[i].length; i++) {
-    if (!cheese.includes(cheese)) {
-      this.cheese.push(cheese);
-    }
+
+  if (!cheese.includes(cheese)) {
+    this.cheese.push(cheese);
   }
 };
 
@@ -44,7 +42,7 @@ Pizza.prototype.removeCheese = function (cheese) {
   }
 };
 
-//one pizza sauce not multiple
+//one pizza sauce not multiple - fixed
 //any sort of variable type can be passed into sauce keep aware
 Pizza.prototype.addSauce = function (sauce) {
   this.sauce = sauce;
@@ -52,7 +50,7 @@ Pizza.prototype.addSauce = function (sauce) {
 Pizza.prototype.removeSauce = function () {
   this.sauce = 'olive oil';
 };
-//check to see if toppings are already on pizza
+//check to see if toppings are already on pizza - fixed
 //might not need to be here.
 
 Pizza.prototype.render = function () {
