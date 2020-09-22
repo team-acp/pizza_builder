@@ -13,12 +13,16 @@ function Pizza(sauce, cheese, toppings) {
 Pizza.prototype.addTopping = function (toppings) {
   if (!toppings.includes(toppings)) {
     this.toppings.push(toppings);
+  } for (let i = 0; i < this.toppings[i]; i++) {
+    if (toppings[i] === true) {
+      return null;
+    }
   }
 };
 
 Pizza.prototype.removeTopping = function (toppings) {
   for (let i = 0; i < toppings[i].length; i++) {
-    if (toppings.includes(toppings)) {
+    if (this.toppings.includes(toppings)) {
       this.toppings.splice(i, 1);
       break;
     }
@@ -27,9 +31,12 @@ Pizza.prototype.removeTopping = function (toppings) {
 };
 
 Pizza.prototype.addCheese = function (cheese) {
-
   if (!cheese.includes(cheese)) {
     this.cheese.push(cheese);
+  } for (let i = 0; i < this.cheese[i].length; i++) {
+    if (this.cheese[i] === true) {
+      return null;
+    }
   }
 };
 
