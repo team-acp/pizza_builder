@@ -86,9 +86,9 @@ Pizza.sortToppings = function (toppings) {
 
 Pizza.toppingLayer = function () {
   var selectedToppings = [];
-
-  for (let i = 0; i < extracheese.length; i++) {
-    selectedToppings.push(extracheese[i]);
+  
+  for (let i = 0; i < underLayerMeats.length; i++) {
+    selectedToppings.push(underLayerMeats[i]);
   }
 
   for (let i = 0; i < veggies.length; i++) {
@@ -98,9 +98,11 @@ Pizza.toppingLayer = function () {
   for (let i = 0; i < overLayerMeats.length; i++) {
     selectedToppings.push(overLayerMeats[i]);
   }
-  for (let i = 0; i < underLayerMeats.length; i++) {
-    selectedToppings.push(underLayerMeats[i]);
+ 
+  for (let i = 0; i < extracheese.length; i++) {
+    selectedToppings.push(extracheese[i]);
   }
+
   for (let i = 0; i < afterbakes.length; i++) {
     selectedToppings.push(afterbakes[i]);
   }
