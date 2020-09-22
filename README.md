@@ -1,4 +1,4 @@
-# valkyrie (working title)
+# Pizza Builder
 
 ## members
 
@@ -8,7 +8,7 @@
 1. Kim
 1. Ryan
 
-Potential projects:
+## Project: Pizza builder
 
-1. Pizza builder
-1. Code Fellows RPG
+[User Stories](https://trello.com/b/0MepxEMt/pizza)
+[Domain Model](domain_model.png)
