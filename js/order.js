@@ -40,3 +40,20 @@ createAllCheckBoxes();
 var myPizza = new Pizza('sauce', 'mozzarella', ['green peppers', 'mushrooms', 'onions', 'anchovies']);
 myPizza.render();
 
+document.getElementById('topping_selector').addEventListener('click', toppingCheckBox);
+
+function toppingCheckBox(event) {
+  var topping = event.target.value;
+  var checked = event.target.checked;
+  console.log(topping, checked);
+  if (!topping) {
+    return;
+  }
+  if (checked === true) {
+    myPizza.addTopping(topping);
+  } else {
+    myPizza.removeTopping(topping);
+  }
+  document.getElementById('your_pizza').innerHTML = null;
+  myPizza.render();
+}
