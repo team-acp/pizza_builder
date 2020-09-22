@@ -21,44 +21,55 @@ function Pizza(sauce, cheese, toppings) {
     this.cheese = cheese;
     this.toppings = toppings;
 }
-
+//accept multiple toppings
+//max of 5 toppings
+//no double toppings
 Pizza.prototype.addTopping = function (toppings) {
+
     if (!toppings.includes(toppings)) {
         this.toppings.push(toppings);
     }
 };
 
 Pizza.prototype.removeTopping = function (toppings) {
-    if (toppings.includes(toppings)) {
-        this.toppings.detach(toppings);
+    for (let i = 0; i < toppings[i].length; i++) {
+        if (toppings.includes(toppings)) {
+            this.toppings.splice(i, 1);
+            break;
+        }
+
     }
 };
 
 Pizza.prototype.addCheese = function (cheese) {
-    if (!cheese.includes(cheese)) {
-        this.cheese.push(cheese);
+    for (let i = 0; i < cheese[i].length; i++) {
+        if (!cheese.includes(cheese)) {
+            this.cheese.push(cheese);
+        }
     }
 };
 
 Pizza.prototype.removeCheese = function (cheese) {
-    if (cheese.includes(cheese)) {
-        this.cheese.detach(cheese);
+    for (let i = 0; i < cheese[i].length; i++) {
+        if (cheese.includes(cheese)) {
+            this.cheese.splice(i, 1);
+            break;
+        }
     }
 };
-
+//one pizza sauce not multiple
 Pizza.prototype.addSauce = function (sauce) {
-    if (!sauce.includes(sauce)) {
-        this.sauce.push(sauce);
-    }
+    this.sauce = sauce;
 };
 
-Pizza.prototype.removeSauce = function (sauce) {
-    if (sauce.includes(sauce)) {
-        this.sauce.detach(sauce);
-    }
+Pizza.prototype.removeSauce = function () {
+    this.sauce = 'olive oil';
 };
 //check to see if toppings are already on pizza
 console.log(toppings);
+
+
+//might not need to be here.
 Pizza.prototype.addTopping = function () {
     var addToppings = document.getElementById('meats', 'vegetables');
     var listEl = document.createElement('li');
@@ -79,9 +90,9 @@ Pizza.prototype.removeTopping = function () {
     }//make it so u cant remove a topping that isnt there
 };
 
-
+//getElementById
 Pizza.prototype.addCheese = function () {
-    var addCheese = document.getElementByClass('cheese');
+    var addCheese = document.getElementById('cheese');
     var listEl = document.createElement('li');
     for (let i = 0; i < Pizza.cheese[i].length; i++) {
         listEl = Pizza.cheese[i];
@@ -90,7 +101,7 @@ Pizza.prototype.addCheese = function () {
 };
 
 Pizza.prototype.removeCheese = function () {
-    var removeCheese = document.getElementByClass('cheese');
+    var removeCheese = document.getElementById('cheese');
     var listEl = document.removeElement('li');
     for (let i = 0; i < Pizza.cheese[i].length; i++) {
         listEl = Pizza.cheese[i];
@@ -99,7 +110,7 @@ Pizza.prototype.removeCheese = function () {
 };
 
 Pizza.prototype.addSauce = function () {
-    var addSauce = document.getelementByClass('sauce');
+    var addSauce = document.getelementById('sauce');
     var listEl = document.createElement('li');
     for (let i = 0; i < Pizza.sauce[i].length; i++) {
         listEl = Pizza.sauce[i];
@@ -108,12 +119,16 @@ Pizza.prototype.addSauce = function () {
 };
 
 Pizza.prototype.removeSauce = function () {
-    var removeSauce = document.getElementByClass('sauce');
+    var removeSauce = document.getElementById('sauce');
     var listEl = document.createElement('li');
     for (let i = 0; i < Pizza.sauce[i].length; i++) {
         listEl = Pizza.sauce[i];
         removeSauce.detach(listEl);
     }
+};
+
+Pizza.prototype.render = function () {
+
 };
 
 var sauceString = JSON.stringify(Pizza.sauce);
