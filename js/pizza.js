@@ -1,5 +1,12 @@
 'use strict';
 //global variables
+var sauces = ['red sauce', 'olive oil', 'bbq', 'pesto'];
+var basecheese = ['mozzarella', 'fresh mozzarella'];
+var extracheese = ['feta', 'gorgonzola', 'goat cheese', 'riccota'];
+var veggies = ['fresh minced garlic', 'mushrooms', 'green peppers', 'onions', 'red onions', 'olives', 'mama lil\'s', 'roasted garlic', 'sundried tomatoes', 'pinapple', 'jalepeno', 'pepperoncini']; //Test toppings array
+var underLayerMeats = ['canadian bacon', 'salami', 'prosciutto', 'pepperoni'];
+var overLayerMeats = ['chicken', 'sausage', 'anchovies']
+var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'tomatoes', 'sea salt'];
 
 //constructor
 function Pizza(sauce, cheese, toppings) {
@@ -76,21 +83,28 @@ Pizza.sortToppings = function (toppings) {
   toppings.sort(function (a, b) { return Pizza.toppingLayer(a) - Pizza.toppingLayer(b); });
 };
 
-Pizza.toppingLayer = function (topping) {
-  //future editing/test function
-  switch (topping) {
-    case 'green peppers': return 12;
-    case 'pineapple': return 14;
-    case 'mushrooms': return 11;
-    case 'onions': return 13;
-    case 'fresh minced garlic': return -1;
-    default: return 0;
+
+Pizza.toppingLayer = function () {
+  var selectedToppings = [];
+
+  for (let i = 0; i < extracheese.length; i++) {
+    selectedToppings.push(extracheese[i]);
+  }
+
+  for (let i = 0; i < veggies.length; i++) {
+    selectedToppings.push(veggies[i]);
+  }
+
+  for (let i = 0; i < overLayerMeats.length; i++) {
+    selectedToppings.push(overLayerMeats[i]);
+  }
+  for (let i = 0; i < underLayerMeats.length; i++) {
+    selectedToppings.push(underLayerMeats[i]);
+  }
+  for (let i = 0; i < afterbakes.length; i++) {
+    selectedToppings.push(afterbakes[i]);
   }
 };
 
 
 
-// var sauceString = JSON.stringify(Pizza.sauce);
-// var toppingsString = JSON.stringify(Pizza.toppings);
-// var cheeseString = JSON.stringify(Pizza.cheese);
-// localStorage.setItem('cheeseString', 'toppingsString', 'sauceString');
