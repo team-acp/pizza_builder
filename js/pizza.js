@@ -56,8 +56,11 @@ Pizza.prototype.removeSauce = function () {
 //might not need to be here.
 
 Pizza.prototype.render = function () {
+
 };
-var sauceString = JSON.stringify(Pizza.sauce);
-var toppingsString = JSON.stringify(Pizza.toppings);
-var cheeseString = JSON.stringify(Pizza.cheese);
-localStorage.setItem('cheeseString', 'toppingsString', 'sauceString');
+
+
+// var sauceString = JSON.stringify(Pizza.sauce);
+// var toppingsString = JSON.stringify(Pizza.toppings);
+// var cheeseString = JSON.stringify(Pizza.cheese);
+// localStorage.setItem('cheeseString', 'toppingsString', 'sauceString');
