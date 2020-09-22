@@ -1,13 +1,6 @@
 'use strict';
 
 
-var sauces = ['red sauce', 'olive oil', 'bbq', 'pesto'];
-var basecheese = ['mozzarella', 'fresh mozzarella'];
-var extracheese = ['feta', 'gorgonzola', 'goat cheese', 'riccota'];
-var veggies = ['fresh minced garlic', 'mushrooms', 'green peppers', 'onions', 'red onions', 'olives', 'mama lil\'s', 'roasted garlic', 'sundried tomatoes', 'pinapple', 'jalepeno', 'pepperoncini']; //Test toppings array
-var meats = ['canadian bacon', 'salami', 'prosciutto', 'pepperoni', 'chicken', 'sausage', 'anchovies'];
-var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'tomatoes', 'sea salt'];
-
 function createCheckboxList(toppings, container) {
   for (let i = 0; i < toppings.length; i++) {
     var inputEl = document.createElement('input');
@@ -49,8 +42,6 @@ myPizza.render();
 
 document.getElementById('topping_selector').addEventListener('click', toppingCheckBox);
 
-
-
 function toppingCheckBox(event) {
   var topping = event.target.value;
   var checked = event.target.checked;
@@ -65,14 +56,4 @@ function toppingCheckBox(event) {
   }
   document.getElementById('your_pizza').innerHTML = null;
   myPizza.render();
-
-
-  //add pizza to dom
-
-  //use render method to add pizza
-
-
-  //check whether checkbox has been checked or unchecked
-  //which checkbox has been checked
 }
-
