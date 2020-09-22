@@ -21,7 +21,7 @@ function Pizza(sauce, cheese, toppings) {
     this.cheese = cheese;
     this.toppings = toppings;
 }
-
+console.log(toppings);
 Pizza.prototype.addTopping = function () {
     var addToppings = document.getElementByClass('toppings');
     var listEl = document.createElement('li');
