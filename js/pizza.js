@@ -62,6 +62,7 @@ Pizza.prototype.removeSauce = function () {
 
 Pizza.prototype.render = function () {
   var orderEl = document.getElementById('your_pizza');
+  if (!orderEl) orderEl = document.getElementById('order_pizza');//this is hack so that CSS will not capture the ticket the same way it does on the order form
   var toppingsEl = document.createElement('ul');
   orderEl.append(toppingsEl);
 
@@ -107,19 +108,19 @@ Pizza.toppingLayer = function () {
 };
 
 //save pizza order turning the variables to strings and saving to local storage
-Pizza.savePizza = function(pizza) {
-  var pizzaString = JSON.stringify(pizza)
-  localStorage.setItem("pizza", pizzaString);
-}
+Pizza.prototype.savePizza = function() {
+  var pizzaString = JSON.stringify(this);
+  localStorage.setItem('pizza', pizzaString);
+};
+
 //creating pizza from local storage and making them into a order list
-Pizza.loadPizza = function() {
-  var pizzaString = localStorage.getItem("pizza");
+Pizza.prototype.loadPizza = function() {
+  var pizzaString = localStorage.getItem('pizza');
   var tempPizza = JSON.parse(pizzaString);
-  var sauce = tempPizza.sauce
-  var cheese = tempPizza.cheese
-  var toppings = tempPizza.toppings
-  return new Pizza(sauce, cheese, toppings);
-}
+  this.sauce = tempPizza.sauce;
+  this.cheese = tempPizza.cheese;
+  this.toppings = tempPizza.toppings;
+};
 
 
 
