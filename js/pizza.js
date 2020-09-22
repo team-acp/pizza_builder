@@ -56,8 +56,38 @@ Pizza.prototype.removeSauce = function () {
 //might not need to be here.
 
 Pizza.prototype.render = function () {
+  var orderEl = document.getElementById('your_pizza');
+  var toppingsEl = document.createElement('ul');
+  orderEl.append(toppingsEl);
 
+  Pizza.sortToppings(this.toppings);
+
+  var li;
+  for (let i = 0; i < this.toppings.length; i++) {
+    li = document.createElement('li');
+    toppingsEl.append(li);
+    li.textContent = this.toppings[i];
+    if (Pizza.toppingLayer(this.toppings[i]) < 0)
+      li.textContent += ' (Under the cheese)';
+
+  }
 };
+Pizza.sortToppings = function (toppings) {
+  toppings.sort(function (a, b) { return Pizza.toppingLayer(a) - Pizza.toppingLayer(b); });
+};
+
+Pizza.toppingLayer = function (topping) {
+  //future editing/test function
+  switch (topping) {
+    case 'green peppers': return 12;
+    case 'pineapple': return 14;
+    case 'mushrooms': return 11;
+    case 'onions': return 13;
+    case 'fresh minced garlic': return -1;
+    default: return 0;
+  }
+};
+
 
 
 // var sauceString = JSON.stringify(Pizza.sauce);
