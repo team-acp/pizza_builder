@@ -80,6 +80,7 @@ h3 {
 
 main {
     background: #ffffff;
+    overflow-y: auto;
 }
 
 .main_container{
@@ -108,7 +109,8 @@ main {
 }
 
 .toppings {
-    width:150px;
+    width: 25%;
+    overflow: auto;
 }
 
 #sauce, #cheese_base, #meats, #cheese_toppings{
@@ -116,7 +118,7 @@ main {
 }
 
 #vegetables {
-    height: 96%;
+    min-height: 96%;
 }
 
 legend {
@@ -144,14 +146,23 @@ color: #6B841E;
     background: #DEB331;
 }
 
-#meats{
+#meats legend{
     color: #9F2A16;
 }
 
 #your_pizza{
+    padding: 5%;
     height: 500px;
+    overflow: auto;
     background: #F2CD7F;
     box-shadow: #575757 0px 0px 10px;
+}
+
+#submit_pizza{
+    margin: 5%;
+    padding: 2%;
+    border-radius: 3%;
+    font-family: 'Press Start 2P';
 }
 
 footer {

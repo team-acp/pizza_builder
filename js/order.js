@@ -83,10 +83,14 @@ function toppingCheckBoxHandler(event) {
   Pizza.savePizza(myPizza);
 }
 
+function submitButtonHandler() {
+  myPizza.savePizza();
+}
+
 document.getElementById('topping_selector').addEventListener('click', toppingCheckBoxHandler);
+document.getElementById('submit_pizza').addEventListener('click', submitButtonHandler);
 
 createAllCheckBoxes();
 syncCheckboxes();
-// this is a test pizza
 
 myPizza.render();
