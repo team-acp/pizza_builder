@@ -1,7 +1,7 @@
 'use strict';
 
 
-function createCheckboxList(toppings, container) {
+function createCheckboxList(toppings, container, type) {
   for (let i = 0; i < toppings.length; i++) {
     var inputEl = document.createElement('input');
     var labelEl = document.createElement('label');
@@ -9,8 +9,7 @@ function createCheckboxList(toppings, container) {
     container.append(labelEl);
     container.append(document.createElement('br'));
 
-
-    inputEl.type = 'checkbox';
+    inputEl.type = type;
     inputEl.id = 'cb_' + toppings[i];
     inputEl.name = 'cb_' + toppings[i];
     inputEl.value = toppings[i];
@@ -23,20 +22,37 @@ function createCheckboxList(toppings, container) {
 }
 
 function createAllCheckBoxes() {
-  var sauceEl = document.getElementById('sauce');
-  var cheeseEl = document.getElementById('cheese');
+  var saucesEl = document.getElementById('sauce');
+  var cheesesEl = document.getElementById('cheese_base');
   var veggiesEl = document.getElementById('vegetables');
   var meatsEl = document.getElementById('meats');
-  // var afterbakesEl = document.getElementById('afterbakes');
-  createCheckboxList(sauces, sauceEl);
-  createCheckboxList(basecheese, cheeseEl);
-  createCheckboxList(veggies.concat(extracheese), veggiesEl); //should these be separated or copied?
-  createCheckboxList(meats, meatsEl);
-  // createCheckboxList(afterbakes, afterbakesEl);
+  var extracheesesEl = document.getElementById('cheese_toppings');
+
+  // create one array for the veggies and afterbakes
+  var temp_veggies = [];
+  for (let i = 0; i < veggies.length; i++)
+    temp_veggies.push(veggies[i]);
+  for (let i = 0; i < afterbakes.length; i++)
+    temp_veggies.push(afterbakes[i]);
+
+  // create one array for the under and over meats
+  var temp_meats = [];
+  for (let i = 0; i < underLayerMeats.length; i++)
+    temp_meats.push(underLayerMeats[i]);
+  for (let i = 0; i < overLayerMeats.length; i++)
+    temp_meats.push(overLayerMeats[i]);
+
+  // now lets make the checkboxes in the menu form
+  createCheckboxList(sauces, saucesEl, 'checkbox');
+  createCheckboxList(basecheeses, cheesesEl, 'checkbox');
+  createCheckboxList(temp_veggies, veggiesEl, 'checkbox');
+  createCheckboxList(temp_meats, meatsEl, 'checkbox');
+  createCheckboxList(extracheeses, extracheesesEl, 'checkbox');
 }
 
 createAllCheckBoxes();
 
+// this is a test pizza
 var myPizza = new Pizza('sauce', 'mozzarella', ['green peppers', 'mushrooms', 'onions', 'anchovies']);
 myPizza.render();
 

@@ -1,11 +1,12 @@
 'use strict';
 //global variables
 var sauces = ['red sauce', 'olive oil', 'bbq', 'pesto'];
-var basecheese = ['mozzarella', 'fresh mozzarella'];
-var extracheese = ['feta', 'gorgonzola', 'goat cheese', 'riccota'];
+var sauce_seasonings = ['fresh minced garlic', 'red chili flakes', 'oregeno'];
+var basecheeses = ['mozzarella', 'fresh mozzarella'];
+var extracheeses = ['feta', 'gorgonzola', 'goat cheese', 'riccota'];
 var veggies = ['fresh minced garlic', 'mushrooms', 'green peppers', 'onions', 'red onions', 'olives', 'mama lil\'s', 'roasted garlic', 'sundried tomatoes', 'pinapple', 'jalepeno', 'pepperoncini']; //Test toppings array
 var underLayerMeats = ['canadian bacon', 'salami', 'prosciutto', 'pepperoni'];
-var overLayerMeats = ['chicken', 'sausage', 'anchovies']
+var overLayerMeats = ['chicken', 'sausage', 'anchovies'];
 var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'tomatoes', 'sea salt'];
 
 //constructor
@@ -25,39 +26,13 @@ Pizza.prototype.addTopping = function (topping) {
 
 Pizza.prototype.removeTopping = function (topping) {
   for (let i = 0; i < this.toppings.length; i++) {
-    if (this.toppings.includes(topping)) {
+    if (topping === this.toppings[i]) {
       this.toppings.splice(i, 1);
       break;
     }
 
   }
 };
-
-Pizza.prototype.addCheese = function (cheese) {
-  if (!cheese.includes(cheese)) {
-    this.cheese.push(cheese);
-  }
-};
-
-Pizza.prototype.removeCheese = function (cheese) {
-  for (let i = 0; i < cheese[i].length; i++) {
-    if (cheese.includes(cheese)) {
-      this.cheese.splice(i, 1);
-      break;
-    }
-  }
-};
-
-//one pizza sauce not multiple - fixed
-//any sort of variable type can be passed into sauce keep aware
-Pizza.prototype.addSauce = function (sauce) {
-  this.sauce = sauce;
-};
-Pizza.prototype.removeSauce = function () {
-  this.sauce = 'olive oil';
-};
-//check to see if toppings are already on pizza - fixed
-//might not need to be here.
 
 Pizza.prototype.render = function () {
   var orderEl = document.getElementById('your_pizza');
@@ -72,8 +47,15 @@ Pizza.prototype.render = function () {
     li = document.createElement('li');
     toppingsEl.append(li);
     li.textContent = this.toppings[i];
+
+    // Any topping with a negative toppingLayer are meant to go under the cheese
     if (Pizza.toppingLayer(this.toppings[i]) < 0)
       li.textContent += ' (Under the cheese)';
+
+    // Any topping in the afterbakes array will say so
+    if (afterbakes.includes(this.toppings[i])) {
+      li.textContent += ' (afterbake)';
+    }
 
   }
 };
@@ -82,9 +64,25 @@ Pizza.sortToppings = function (toppings) {
 };
 
 
-Pizza.toppingLayer = function () {
+Pizza.toppingLayer = function (topping) {
   var selectedToppings = [];
-  
+
+  // Return a negative value for sauce_seasonings
+  if (sauce_seasonings.includes(topping))
+    for (let i = 0; i < sauce_seasonings.length; i++)
+      if (topping === sauce_seasonings[i])
+        return i - sauce_seasonings.length;
+
+  // sauces are at layer 0
+  if (sauces.includes(topping))
+    return 0;
+
+  if (basecheeses.includes(topping))
+    for (let i = 0; i < sauces.length; i++)
+      if (topping === sauces[i])
+        return i - sauces.length;
+
+  // compile all other toppings into a single array
   for (let i = 0; i < underLayerMeats.length; i++) {
     selectedToppings.push(underLayerMeats[i]);
   }
@@ -96,24 +94,33 @@ Pizza.toppingLayer = function () {
   for (let i = 0; i < overLayerMeats.length; i++) {
     selectedToppings.push(overLayerMeats[i]);
   }
- 
-  for (let i = 0; i < extracheese.length; i++) {
-    selectedToppings.push(extracheese[i]);
+
+  for (let i = 0; i < extracheeses.length; i++) {
+    selectedToppings.push(extracheeses[i]);
   }
 
   for (let i = 0; i < afterbakes.length; i++) {
     selectedToppings.push(afterbakes[i]);
   }
+
+  // return the position of that topping in the array + 10
+  // this is because sauce is layer 0, and base_cheeses are
+  // reserved for layers 1-9
+  for (let i = 0; i < selectedToppings.length; i++) {
+    if (topping === selectedToppings[i])
+      return i + 1;
+  }
+
 };
 
 //save pizza order turning the variables to strings and saving to local storage
-Pizza.prototype.savePizza = function() {
+Pizza.prototype.savePizza = function () {
   var pizzaString = JSON.stringify(this);
   localStorage.setItem('pizza', pizzaString);
 };
 
 //creating pizza from local storage and making them into a order list
-Pizza.prototype.loadPizza = function() {
+Pizza.prototype.loadPizza = function () {
   var pizzaString = localStorage.getItem('pizza');
   var tempPizza = JSON.parse(pizzaString);
   this.sauce = tempPizza.sauce;
