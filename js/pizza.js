@@ -10,9 +10,7 @@ var overLayerMeats = ['chicken', 'sausage', 'anchovies'];
 var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'tomatoes', 'sea salt'];
 
 //constructor
-function Pizza(sauce, cheese, toppings) {
-  this.sauce = sauce;
-  this.cheese = cheese;
+function Pizza(toppings) {
   this.toppings = toppings;
 }
 //accept multiple toppings
@@ -77,10 +75,11 @@ Pizza.toppingLayer = function (topping) {
   if (sauces.includes(topping))
     return 0;
 
+  //basecheeses are at layer 1-9
   if (basecheeses.includes(topping))
-    for (let i = 0; i < sauces.length; i++)
-      if (topping === sauces[i])
-        return i - sauces.length;
+    for (let i = 0; i < basecheeses.length; i++)//fix bug
+      if (topping === basecheeses[i])
+        return i + 1;
 
   // compile all other toppings into a single array
   for (let i = 0; i < underLayerMeats.length; i++) {
@@ -108,7 +107,7 @@ Pizza.toppingLayer = function (topping) {
   // reserved for layers 1-9
   for (let i = 0; i < selectedToppings.length; i++) {
     if (topping === selectedToppings[i])
-      return i + 1;
+      return i + 10;
   }
 
 };
