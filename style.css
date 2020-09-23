@@ -17,7 +17,12 @@ header{
 
 header p {
     margin-top: -10px;
+    margin-bottom: 0;
+    background: rgba(242,205,127, .3);
     font-family: 'Carter One';
+    color: #ffffff;
+    -webkit-text-stroke: 1.5px #DC4820;
+    text-shadow: #575757 0px 0px 10px;
     font-size: 15px;
     font-style: italic;
     text-align: center;
@@ -53,15 +58,29 @@ header ul li a:hover {
     background-color: #9F2A16;
 }
 
+nav {
+    position: fixed;
+    width: 80%;
+}
+
 h1 {
     margin: 0% 5% 0px;
-    padding: 10px 0;
+    padding: 10% 0% 3%;
+    font-size: 50px;
+    text-align: center;
+}
+
+h1 a{
+    margin: 0% 5% 0px;
+    padding: 10% 0% 3%;
     font-size: 50px;
     text-align: center;
     color: #ffffff;
     font-family: 'Press Start 2P';
     -webkit-text-stroke: 1px #DC4820;
     text-shadow: #575757 0px 0px 10px;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 h2 {
@@ -73,6 +92,7 @@ h2 {
 
 h3 {
     font-family: 'Press Start 2P';
+    text-align: center;
     color: #ffffff;
     -webkit-text-stroke: 1px #DC4820;
     text-shadow: #575757 0px 0px 5px;
@@ -90,11 +110,20 @@ main {
     justify-content: center;
 }
 
-.sectionOne, .sectionTwo{
-    margin: 10px;
-    width: 45%;
+.sectionOne{
+    margin: 5px 2.5px 5px;
+    width: 60%;
     height: 100%;
-    padding: 0 2% 0;
+    padding: 0 0 0;
+    color: #000000;
+    font-size: 13px;
+} 
+
+.sectionTwo{
+    margin: 5px 2.5px 5px;
+    width: 30%;
+    height: 100%;
+    padding: 0 0 0;
     color: #000000;
     font-size: normal;
 }
@@ -105,7 +134,7 @@ main {
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
-    height: 500px;
+    height: 450px;
 }
 
 .toppings {
@@ -118,7 +147,7 @@ main {
 }
 
 #vegetables {
-    min-height: 96%;
+    min-height: 95.3%;
 }
 
 legend {
@@ -152,17 +181,54 @@ color: #6B841E;
 
 #your_pizza{
     padding: 5%;
-    height: 500px;
+    min-height: 350px;
     overflow: auto;
     background: #F2CD7F;
+    background-image: url('https://images.freeimages.com/images/large-previews/569/paper-1518069.jpg');
+    background-size: cover;
     box-shadow: #575757 0px 0px 10px;
+    font-family: monospace;
+    font-size: 15px;
 }
 
-#submit_pizza{
-    margin: 5%;
+#order_pizza{
+    padding-left: 30%;
+}
+
+#your_pizza ul, #order_pizza ul {
+    margin-left: 0;
+    list-style: none;
+}
+
+label{
+    text-transform: capitalize;
+}
+
+#your_pizza li:hover{
+    background: rgba(220,72,32,.3);
+    color: #ffffff;
+}
+
+#your_pizza li:before, #order_pizza li:before{
+    content: '—';
+    padding-right: 3%;
+}
+
+button {
+    margin: 5% 20% 5%;
     padding: 2%;
-    border-radius: 3%;
+    height: 10%;
+    border-radius: 5%;
+    background: #9F2A16;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #DC4820;
+    font-size: 20px;
     font-family: 'Press Start 2P';
+    text-align: center;
+}
+
+button:hover {
+    box-shadow: inset 0 0 0 5px #F2CD7F;
 }
 
 footer {
