@@ -1,9 +1,9 @@
 'use strict';
 
-var newPizzaOrder = new Pizza();
+var newPizzaOrder;
 
 function pizzaOrder() {
-  newPizzaOrder.loadPizza();
+  newPizzaOrder = Pizza.loadPizza();
   newPizzaOrder.render();
 }
 pizzaOrder();

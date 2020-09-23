@@ -113,14 +113,21 @@ Pizza.toppingLayer = function (topping) {
 };
 
 //save pizza order turning the variables to strings and saving to local storage
-Pizza.prototype.savePizza = function () {
-  var pizzaString = JSON.stringify(this);
+Pizza.savePizza = function (pizza) {
+  var pizzaString = JSON.stringify(pizza);
   localStorage.setItem('pizza', pizzaString);
 };
 
 //creating pizza from local storage and making them into a order list
-Pizza.prototype.loadPizza = function () {
+Pizza.loadPizza = function () {
+  var tempPizza;
+  if (!localStorage.pizza) {
+    tempPizza = new Pizza(['red sauce', 'mozzarella']);
+    return tempPizza;
+  }
+
   var pizzaString = localStorage.getItem('pizza');
-  var tempPizza = JSON.parse(pizzaString);
-  this.toppings = tempPizza.toppings;
+  var savedPizza = JSON.parse(pizzaString);
+  tempPizza = new Pizza(savedPizza.topings);
+  return tempPizza;
 };

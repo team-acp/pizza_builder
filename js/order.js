@@ -1,12 +1,6 @@
 'use strict';
 
-var myPizza = new Pizza([]);
-myPizza.loadPizza();
-
-if (!myPizza.toppings.length) {
-  myPizza.addTopping('red sauce');
-  myPizza.addTopping('mozzarella');
-}
+var myPizza = Pizza.loadPizza();
 
 function createCheckboxList(toppings, container, type, name) {
   for (let i = 0; i < toppings.length; i++) {
@@ -65,14 +59,6 @@ function createAllCheckBoxes() {
   createCheckboxList(extracheeses, extracheesesEl, 'checkbox', 'topping');
 }
 
-createAllCheckBoxes();
-syncCheckboxes();
-// this is a test pizza
-
-myPizza.render();
-
-document.getElementById('topping_selector').addEventListener('click', toppingCheckBoxHandler);
-
 function toppingCheckBoxHandler(event) {
   var topping = event.target.value;
   var checked = event.target.checked;
@@ -94,5 +80,13 @@ function toppingCheckBoxHandler(event) {
   }
   document.getElementById('your_pizza').innerHTML = null;
   myPizza.render();
-  myPizza.savePizza();
+  Pizza.savePizza(myPizza);
 }
+
+document.getElementById('topping_selector').addEventListener('click', toppingCheckBoxHandler);
+
+createAllCheckBoxes();
+syncCheckboxes();
+// this is a test pizza
+
+myPizza.render();
