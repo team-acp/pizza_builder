@@ -20,35 +20,44 @@
                 <li><a href="/ticket.html">ORDER TICKETS</a></li>
             </ul>
         </nav>
-    </header>
-    <main>
-        <h2>BUILD YOUR OWN PIZZA!</h2>
-        <form id="topping_selector" class="toppings_container">
-            <fieldset id="sauce" class="toppings">
-                <legend>
-                    SAUCE
-                </legend>
-            </fieldset>
-            <fieldset id="cheese" class="toppings">
-                <legend>
-                    CHEESE
-                </legend>
-            </fieldset>
-            <fieldset id="vegetables" class="toppings">
-                <legend>
-                    VEGETABLES
-                </legend>
-            </fieldset>
-            <fieldset id="meats" class="toppings">
-                <legend>
-                    MEATS
-                </legend>
-            </fieldset>
-        </form>
-        <div id="your_pizza">
+  </header>
+  
+    <main class="main_container">
+        <div class="sectionOne">
+            <h2>BUILD YOUR OWN PIZZA!</h2>
+            <form id="topping_selector" class="toppings_container">
+                <fieldset id="sauce" class="toppings">
+                    <legend>
+                        SAUCE
+                    </legend>
+                </fieldset>
+                <fieldset id="cheese_base" class="toppings">
+                    <legend>
+                        CHEESE LAYER
+                    </legend>
+                </fieldset>
+                <fieldset id="vegetables" class="toppings">
+                    <legend>
+                        VEGETABLES
+                    </legend>
+                </fieldset>
+                <fieldset id="meats" class="toppings">
+                    <legend>
+                        MEATS
+                    </legend>
+                </fieldset>
+                <fieldset id="cheese_toppings" class="toppings">
+                    <legend>
+                        <span id="bonus"> BONUS </span> CHEESE
+                    </legend>
+                </fieldset>
+            </form>
+        </div>
+        <div class="sectionTwo">
             <h3>
                 PIZZA PREVIEW
             </h3>
+            <div id="your_pizza"></div>
         </div>
     </main>
     <footer>
