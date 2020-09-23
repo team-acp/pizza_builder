@@ -123,11 +123,11 @@ Pizza.loadPizza = function () {
   var tempPizza;
   if (!localStorage.pizza) {
     tempPizza = new Pizza(['red sauce', 'mozzarella']);
-    return tempPizza;
-  }
+  } else {
+    var pizzaString = localStorage.getItem('pizza');
+    var savedPizza = JSON.parse(pizzaString);
 
-  var pizzaString = localStorage.getItem('pizza');
-  var savedPizza = JSON.parse(pizzaString);
-  tempPizza = new Pizza(savedPizza.topings);
+    tempPizza = new Pizza(savedPizza.toppings);
+  }
   return tempPizza;
 };
