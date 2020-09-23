@@ -73,3 +73,9 @@ function toppingCheckBox(event) {
   document.getElementById('your_pizza').innerHTML = null;
   myPizza.render();
 }
+
+document.getElementById('submit_pizza').addEventListener('click', submitButtonHandler);
+
+function submitButtonHandler() {
+  myPizza.savePizza();
+}
