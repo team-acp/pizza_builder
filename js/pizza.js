@@ -122,7 +122,5 @@ Pizza.prototype.savePizza = function () {
 Pizza.prototype.loadPizza = function () {
   var pizzaString = localStorage.getItem('pizza');
   var tempPizza = JSON.parse(pizzaString);
-  this.sauce = tempPizza.sauce;
-  this.cheese = tempPizza.cheese;
   this.toppings = tempPizza.toppings;
 };
