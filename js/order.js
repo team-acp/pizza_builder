@@ -1,80 +1,96 @@
 'use strict';
 
+var myPizza = Pizza.loadPizza();
 
-var sauces = ['red sauce', 'olive oil', 'bbq', 'pesto'];
-var basecheese = ['mozzarella', 'fresh mozzarella'];
-var extracheese = ['feta', 'gorgonzola', 'goat cheese', 'riccota'];
-var veggies = ['fresh minced garlic', 'mushrooms', 'green peppers','onions', 'red onions', 'olives', 'mama lil\'s', 'roasted garlic', 'sundried tomatoes', 'pinapple', 'jalepeno', 'pepperoncini']; //Test toppings array
-var meats = ['canadian bacon', 'salami', 'prosciutto', 'pepperoni', 'chicken', 'sausage', 'anchovies'];
-var afterbakes = ['extra virgin olive oil', 'parsley', 'basil', 'arugula', 'tomatoes', 'sea salt'];
-
-function diplayYourPizza(toppings) {
-  var orderEl = document.getElementById('your_pizza'); //make sure we run ID name by Kim
-  var toppingsEl = document.createElement('ul');
-  orderEl.append(toppingsEl);
-
-  sortToppings(toppings);
-
-  var li;
-  for (let i = 0; i < toppings.length; i++){
-    li = document.createElement('li');
-    toppingsEl.append(li);
-    li.textContent = toppings[i];
-    if (toppingLayer(toppings[i]) < 0)
-      li.textContent += ' (Under the cheese)';
-
-  }
-}
-diplayYourPizza(['green peppers', 'olives']);
-
-function toppingLayer(topping) {
-  switch(topping) {
-  case 'green peppers': return 12;
-  case 'pineapple': return 14;
-  case 'mushrooms': return 11;
-  case 'onions': return 13;
-  case 'fresh minced garlic': return -1;
-  default: return 0;
-  }
-}
-
-function sortToppings(toppings) {
-  toppings.sort(function(a,b){return toppingLayer(a) - toppingLayer(b);});
-}
-
-function createCheckboxList(toppings, container) {
+function createCheckboxList(toppings, container, type, name) {
   for (let i = 0; i < toppings.length; i++) {
-    var inputEl = document.createElement('imput');
+    var inputEl = document.createElement('input');
     var labelEl = document.createElement('label');
     container.append(inputEl); //do we want to append the input to the label?
     container.append(labelEl);
     container.append(document.createElement('br'));
 
-
-    inputEl.type = 'checkbox';
+    inputEl.type = type;
+    inputEl.setAttribute('class', 'toppingCheckbox');
     inputEl.id = 'cb_' + toppings[i];
-    inputEl.name = 'cb_' + toppings[i];
+    inputEl.name = name;
     inputEl.value = toppings[i];
-    labelEl.for = 'cb_' + toppings[i];
+    labelEl.for = name;
     labelEl.textContent = toppings[i];
-
   }
-
   return container;
 }
 
-function createAllCheckBoxes() {
-  var sauceEl = document.getElementById('sauce');
-  var cheeseEl = document.getElementById('cheese');
-  var veggiesEl = document.getElementById('vegetables');
-  var meatsEl = document.getElementById('meats');
-  // var afterbakesEl = document.getElementById('afterbakes');
-  createCheckboxList(sauces, sauceEl);
-  createCheckboxList(basecheese, cheeseEl);
-  createCheckboxList(veggies.concat(extracheese), veggiesEl); //should these be separated or copied?
-  createCheckboxList(meats, meatsEl);
-  // createCheckboxList(afterbakes, afterbakesEl);
+function syncCheckboxes() {
+  var allCheckboxes = document.getElementsByClassName('toppingCheckbox');
+  for (let i = 0; i < allCheckboxes.length; i++) {
+    if (myPizza.toppings.includes(allCheckboxes[i].value)) {
+      allCheckboxes[i].checked = true;
+    }
+  }
 }
 
-createAllCheckBoxes();
+function createAllCheckBoxes() {
+  var saucesEl = document.getElementById('sauce');
+  var cheesesEl = document.getElementById('cheese_base');
+  var veggiesEl = document.getElementById('vegetables');
+  var meatsEl = document.getElementById('meats');
+  var extracheesesEl = document.getElementById('cheese_toppings');
 
+  // create one array for the veggies and afterbakes
+  var temp_veggies = [];
+  for (let i = 0; i < veggies.length; i++)
+    temp_veggies.push(veggies[i]);
+  for (let i = 0; i < afterbakes.length; i++)
+    temp_veggies.push(afterbakes[i]);
+
+  // create one array for the under and over meats
+  var temp_meats = [];
+  for (let i = 0; i < underLayerMeats.length; i++)
+    temp_meats.push(underLayerMeats[i]);
+  for (let i = 0; i < overLayerMeats.length; i++)
+    temp_meats.push(overLayerMeats[i]);
+
+  // now lets make the checkboxes in the menu form
+  createCheckboxList(sauces, saucesEl, 'radio', 'sauce');
+  createCheckboxList(basecheeses, cheesesEl, 'checkbox', 'cheese');
+  createCheckboxList(temp_veggies, veggiesEl, 'checkbox', 'topping');
+  createCheckboxList(temp_meats, meatsEl, 'checkbox', 'topping');
+  createCheckboxList(extracheeses, extracheesesEl, 'checkbox', 'topping');
+}
+
+function toppingCheckBoxHandler(event) {
+  var topping = event.target.value;
+  var checked = event.target.checked;
+  console.log(topping, checked);
+  if (!topping) {
+    return;
+  }
+
+  if (event.target.name === 'sauce') {
+    for (let i = 0; i < sauces.length; i++) {
+      myPizza.removeTopping(sauces[i]);
+    }
+  }
+
+  if (checked === true) {
+    myPizza.addTopping(topping);
+  } else {
+    myPizza.removeTopping(topping);
+  }
+  document.getElementById('your_pizza').innerHTML = null;
+  myPizza.render();
+  Pizza.savePizza(myPizza);
+}
+
+function submitButtonHandler() {
+  Pizza.savePizza(myPizza);
+}
+
+document.getElementById('topping_selector').addEventListener('click', toppingCheckBoxHandler);
+document.getElementById('submit_pizza').addEventListener('click', submitButtonHandler);
+
+createAllCheckBoxes();
+syncCheckboxes();
+
+myPizza.render();
