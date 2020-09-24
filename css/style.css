@@ -180,7 +180,7 @@ color: #6B841E;
 }
 
 #your_pizza{
-    padding: 5%;
+    padding: 0 5% 0;
     min-height: 350px;
     overflow: auto;
     background: #F2CD7F;
@@ -192,7 +192,7 @@ color: #6B841E;
 }
 
 #order_pizza{
-    padding-left: 30%;
+    padding: 0 30% 0;
 }
 
 #your_pizza ul, #order_pizza ul {
@@ -231,12 +231,26 @@ button:hover {
     box-shadow: inset 0 0 0 5px #F2CD7F;
 }
 
+#requests{
+    text-transform: capitalize;
+}
+
+#ticket_entry_form{
+    padding: 0 30% 0;
+}
+
+#ticket_entry_form label{
+    text-transform: none;
+    font-family: 'Carter One';
+}
+
 #text_box{
     resize: none;
 }
 
 #submit_button{
     height: 10%;
+    margin-left: 50%;
     border-radius: 5%;
     background: #9F2A16;
     color: #ffffff;
