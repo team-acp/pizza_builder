@@ -56,7 +56,6 @@ Pizza.prototype.render = function () {
     }
 
   }
-
 };
 
 Pizza.prototype.createStickyNote = function () {
