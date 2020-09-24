@@ -90,7 +90,6 @@ function submitButtonHandler() {
 document.getElementById('topping_selector').addEventListener('click', toppingCheckBoxHandler);
 document.getElementById('submit_pizza').addEventListener('click', submitButtonHandler);
 
-
 createAllCheckBoxes();
 syncCheckboxes();
 
