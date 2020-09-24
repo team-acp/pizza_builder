@@ -10,13 +10,15 @@ pizzaOrder();
 
 function commentButtonHandler(event) {
   event.preventDefault();
-  var commentPlaceEl = document.createElement('p');
-  commentPlaceEl.id = "instruction";
-  var textFieldEl = document.getElementById('text_box');
-  commentPlaceEl.textContent = textFieldEl.value;
+
   var orderPizzaEl = document.getElementById('order_pizza');
-  orderPizzaEl.append(commentPlaceEl);
-  document.getElementById('comment').innerHTML = null;
+  var commentsEl = document.createElement('p');
+  orderPizzaEl.append(commentsEl);
+
+  commentsEl.id = 'instruction';
+  commentsEl.textContent = document.getElementById('text_box').value;
+
+  document.getElementById('ticket_entry_form').innerHTML = null;
 }
 
 document.getElementById('submit_button').addEventListener('click', commentButtonHandler);
