@@ -1,6 +1,6 @@
 /* color pallete credit + link: https://www.colourlovers.com/palette/2306091/Pizza_mania */
 
-body{
+body {
     margin: 0 5% 0;
     padding: 0 5% 0;
     font-family: Arial;
@@ -32,8 +32,6 @@ header ul {
     background-image: linear-gradient(#A31818, #DC4820, #A31818);
     box-shadow: #575757 0px 0px 5px;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
     font-weight: bold;
 }
@@ -41,8 +39,6 @@ header ul {
 header ul li {
     display: block;
     float: left;
-    margin: 0;
-    border: 0;
     padding: 0 10px 0;
 }
 
@@ -244,13 +240,9 @@ button:hover {
     font-family: 'Carter One';
 }
 
-#text_box{
-    resize: none;
-}
-
 #submit_button{
     height: 10%;
-    margin-left: 50%;
+    margin-left: 35%;
     border-radius: 5%;
     background: #9F2A16;
     color: #ffffff;
@@ -260,8 +252,12 @@ button:hover {
     text-align: center;
 }
 
+#text_box{
+    resize: none;
+}
+
 #instruction{
-    width: 50px;    
+    margin: 1%;  
 }
 
 footer {
