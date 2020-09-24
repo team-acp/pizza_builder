@@ -231,6 +231,22 @@ button:hover {
     box-shadow: inset 0 0 0 5px #F2CD7F;
 }
 
+#text_box{
+    width: 500px;
+    height: 250px;
+}
+
+#submit_button{
+    height: 10%;
+    border-radius: 5%;
+    background: #9F2A16;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #DC4820;
+    font-size: 20px;
+    font-family: 'Press Start 2P';
+    text-align: center;
+}
+
 footer {
     border: #6B8413;
     padding: 5px 0 5px;
