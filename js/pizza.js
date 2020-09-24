@@ -57,6 +57,7 @@ Pizza.prototype.render = function () {
 
   }
 };
+
 Pizza.sortToppings = function (toppings) {
   toppings.sort(function (a, b) { return Pizza.toppingLayer(a) - Pizza.toppingLayer(b); });
 };
