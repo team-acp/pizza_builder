@@ -60,19 +60,44 @@ function createAllCheckBoxes() {
 }
 
 function toppingCheckBoxHandler(event) {
-  var topping = event.target.value;
-  var checked = event.target.checked;
-  console.log(topping, checked);
+  var target = event.target;
+
+  // Handle if we clicked on the label instead of the checkbox
+  // which means reassign the target to the checkbox (or radio) object
+  // and set a flag so we can manually manage the checkbox (or radio)
+  // status later
+  if (target.nodeName === 'LABEL') {
+    var clickedLabel = 1;
+    target = document.getElementById('cb_' + target.textContent);
+    console.log(target.type);
+    var radio = target.type === 'radio';
+  }
+
+  // if we clicked on something without a topping attribute, get out
+  var topping = target.value;
   if (!topping) {
     return;
   }
 
-  if (event.target.name === 'sauce') {
+  // get out if we clicked a label on a radio button that is already true
+  var checked = target.checked;
+  if (clickedLabel && radio && target.checked)
+    return;
+
+  // manually adjust checkbox value if we clicked the label
+  if (clickedLabel) {
+    checked = !checked;
+    target.checked = checked;
+  }
+
+  // remove all souces from the pizza, we'll reapply the one sauce later
+  if (target.name === 'sauce') {
     for (let i = 0; i < sauces.length; i++) {
       myPizza.removeTopping(sauces[i]);
     }
   }
 
+  // apply or unapply the topping (including a sauce if that is the target) to the pizza
   if (checked === true) {
     myPizza.addTopping(topping);
   } else {
