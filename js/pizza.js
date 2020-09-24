@@ -57,6 +57,18 @@ Pizza.prototype.render = function () {
 
   }
 };
+
+Pizza.prototype.createStickyNote = function () {
+  if (!this.stickyNote) {
+    this.stickyNote = "Enter special considerations here, please.";
+  }
+  var stickyNoteEl = document.createElement('input');
+  stickyNoteEl.setAttribute('type', 'text');
+  stickyNoteEl.id = "stickyNote";
+  stickyNoteEl.value = this.stickyNote;
+  document.getElementById("order_pizza").append(stickyNoteEl);
+}
+
 Pizza.sortToppings = function (toppings) {
   toppings.sort(function (a, b) { return Pizza.toppingLayer(a) - Pizza.toppingLayer(b); });
 };
